@@ -7,6 +7,8 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 import fr.fms.entities.Customer;
+import fr.fms.entities.Formation;
+import fr.fms.entities.User;
 
 public class CustomerDao implements Dao<Customer> {
 
@@ -99,4 +101,7 @@ public class CustomerDao implements Dao<Customer> {
 		return null;
 	}
 
+	public ArrayList<Customer> readByKeyWord(Customer customer, String keyWord) {
+		return new ArrayList<Customer>();
+	}
 }

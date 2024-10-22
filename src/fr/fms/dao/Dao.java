@@ -4,6 +4,8 @@ import java.sql.Connection;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
+import fr.fms.entities.Formation;
+
 public interface Dao<T> {
 	public static Connection connection = BddConnection.getConnection();
 	public static final Logger logger = Logger.getLogger(Dao.class.getName());
@@ -40,4 +42,5 @@ public interface Dao<T> {
 	 * @return ArrayList<T> correspondant 
 	 */
 	public ArrayList<T> readAll();
+	
 }

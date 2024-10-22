@@ -6,7 +6,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import fr.fms.entities.Formation;
 import fr.fms.entities.Order;
+import fr.fms.entities.User;
 
 public class OrderDao implements Dao<Order> {
 
@@ -52,4 +54,8 @@ public class OrderDao implements Dao<Order> {
 		// TODO Auto-generated method stub
 		return null;
 	}
+	
+	public ArrayList<Order> readByKeyWord(Order order, String keyWord) {
+		return new ArrayList<Order>();
+		}
 }

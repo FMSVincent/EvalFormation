@@ -4,6 +4,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+
+import fr.fms.entities.Formation;
 import fr.fms.entities.User;
 
 public class UserDao implements Dao<User> {
@@ -137,5 +139,9 @@ public class UserDao implements Dao<User> {
 			logger.severe("pb sql sur renvoi d'un utilisateur à partir de son login ");
 		} 	
 		return null;
+	}
+	
+	public ArrayList<User> readByKeyWord(User user, String keyWord) {
+		return new ArrayList<User>();
 	}
 }

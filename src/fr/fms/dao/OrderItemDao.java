@@ -4,7 +4,9 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+import fr.fms.entities.Formation;
 import fr.fms.entities.OrderItem;
+import fr.fms.entities.User;
 
 public class OrderItemDao implements Dao<OrderItem> {
 
@@ -46,6 +48,10 @@ public class OrderItemDao implements Dao<OrderItem> {
 	public ArrayList<OrderItem> readAll() {
 		// TODO Auto-generated method stub
 		return null;
+	}
+	
+	public ArrayList<OrderItem> readByKeyWord(OrderItem orderItem, String keyWord) {
+		return new ArrayList<OrderItem>();
 	}
 
 }

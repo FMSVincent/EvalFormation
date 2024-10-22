@@ -100,4 +100,13 @@ public class IBuisinessImpl implements IBusiness {
 		return categoryDao.read(id);
 	}
 
+	public ArrayList<Formation> getFormationByKeyWord(String keyWord) {
+		ArrayList<Formation> getFormations = ((FormationDao) formationDao).readByKeyWord(keyWord);
+		return getFormations;
+	}
+	
+	public ArrayList<Formation> readIsRemote(int id) {
+		ArrayList<Formation> getFormations = ((FormationDao) formationDao).readIsRemote(id);
+		return getFormations;
+	}
 }

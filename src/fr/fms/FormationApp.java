@@ -29,7 +29,7 @@ public class FormationApp {
 		System.out.println("Bonjour et bienvenu dans ma boutique, voici la liste d'articles en stock\n");
 		displayFormations();
 		int choice = 0;
-		while(choice != 7) {
+		while(choice != 10) {
 			displayMenu();
 			choice = scanInt();
 			switch(choice) {
@@ -43,9 +43,15 @@ public class FormationApp {
 					break;						
 				case 5 : displayArticlesByCategoryId();
 					break;
-				case 6 : connection();
+				case 6 : displayByKeyWord();
 					break;
-				case 87 : System.out.println("à bientôt dans notre boutique :)");
+				case 7 : displayCategories();
+					break;
+				case 8 : displayOsRemote();
+					break;
+				case 9 : connection();
+					break;
+				case 10 : System.out.println("à bientôt dans notre boutique :)");
 					break;					
 				default : System.out.println("veuillez saisir une valeur entre 1 et 7");
 			}
@@ -63,8 +69,11 @@ public class FormationApp {
 		System.out.println("3 : Afficher mon panier + total pour passer commande");
 		System.out.println("4 : Afficher tous les articles en stock");
 		System.out.println("5 : Afficher tous les articles d'une catégorie");
-		System.out.println("6 : Connexion(Deconnexion) à votre compte");
-		System.out.println("7 : sortir de l'application");
+		System.out.println("6 : Afficher par mot clé");
+		System.out.println("7 : Afficher les catégories");
+		System.out.println("8 : Afficher par distanciel ou presentiel");
+		System.out.println("9 : Connexion(Deconnexion) à votre compte");
+		System.out.println("10 : sortir de l'application");
 	}
 	
 	/**
@@ -75,6 +84,36 @@ public class FormationApp {
 		System.out.printf("%-10s |%-20s | %-20s | %-30s | %-20s %n",COLUMN_ID,COLUMN_NAME,COLUMN_DURATION,COLUMN_DESCRIPTION,COLUMN_PRICE);
 		System.out.printf("-----------------------------------------------------------------------------------------%n");
 		business.readFormations().forEach( a -> System.out.printf("%-10s | %-20s | %-20s | %-30s | %-20s%n",a.getIdFormation(), a.getName(), a.getDuration(), a.getDescription(), a.getUnitaryPrice()));
+	}
+	
+	/**
+	 * Méthode qui demande a l'utilisateur un mot clé pour faire une recherche par nom de formation
+	 * et affiche le resultat
+	 */
+	public static void displayByKeyWord() {
+		System.out.println("Entrer un mot clé pour faire une recherche");
+		String inputKeyWord = scan.next();
+		System.out.printf("-----------------------------------------------------------------------------------------%n");
+		System.out.printf("%-10s |%-20s | %-20s | %-30s | %-20s %n",COLUMN_ID,COLUMN_NAME,COLUMN_DURATION,COLUMN_DESCRIPTION,COLUMN_PRICE);
+		System.out.printf("-----------------------------------------------------------------------------------------%n");
+		if (business.getFormationByKeyWord(inputKeyWord).size() > 0) business.getFormationByKeyWord(inputKeyWord).forEach( a -> System.out.printf("%-15s | %-15s | %-15s | %-15s%n",a.getName(),a.getDuration(),a.getDescription(), a.getUnitaryPrice()));
+		else System.out.println("Pas de resultat !");
+		
+	}
+	
+	/**
+	 * Affiche les formations parpresentiel ou distanciel
+	 */
+	public static void displayOsRemote() {
+		System.out.println("Entrer 1 pour voir a distance 0 en presentiel");
+		int inputIsRemote = scanInt();
+		System.out.printf("-----------------------------------------------------------------------------------------%n");
+		System.out.printf("%-10s |%-20s | %-20s | %-30s | %-20s %n",COLUMN_ID,COLUMN_NAME,COLUMN_DURATION,COLUMN_DESCRIPTION,COLUMN_PRICE);
+		System.out.printf("-----------------------------------------------------------------------------------------%n");
+		if (business.readIsRemote(inputIsRemote).size() > 0) {
+			business.readIsRemote(inputIsRemote).forEach( a -> System.out.printf("%-15s | %-15s | %-15s | %-15s%n",a.getName(),a.getDuration(),a.getDescription(), a.getUnitaryPrice()));
+		}
+		else System.out.println("Pas de resultat !");
 	}
 	
 	/**
@@ -193,7 +232,7 @@ public class FormationApp {
 				String fName = scan.next();					
 				System.out.println("saisissez votre tel :");
 				String tel = scan.next();		
-				scan.nextLine(); 
+				scan.nextLine();
 				System.out.println("saisissez votre adresse :");
 				String address = scan.nextLine();
 				Customer cust = new Customer(name, fName, email, tel, address, idUser); 

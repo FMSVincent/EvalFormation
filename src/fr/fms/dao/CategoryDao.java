@@ -4,6 +4,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import fr.fms.entities.Category;
+import fr.fms.entities.Formation;
+import fr.fms.entities.User;
 
 public class CategoryDao implements Dao<Category>{
 
@@ -52,6 +54,10 @@ public class CategoryDao implements Dao<Category>{
 			e.printStackTrace();
 		}		
 		return null;
+	}
+	
+	public ArrayList<Category> readByKeyWord(Category category, String keyWord) {
+		return new ArrayList<Category>();
 	}
 
 }

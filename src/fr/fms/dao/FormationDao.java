@@ -143,4 +143,47 @@ public class FormationDao implements Dao<Formation> {
 		}			
 		return formations;
 	}
+	
+	public ArrayList<Formation> readByKeyWord(String keyWord) {
+		ArrayList<Formation> formations = new ArrayList<Formation>();
+		String str = "SELECT * FROM T_Formations WHERE NAME LIKE ?";
+		try (PreparedStatement ps = connection.prepareStatement(str)) {
+			ps.setString(1, "%" + keyWord + "%");
+			ResultSet resultSet = ps.executeQuery();
+			while(resultSet.next()) {
+				int rsId = resultSet.getInt(1);	
+				String rsName = resultSet.getString(2);
+				int rsDuration = resultSet.getInt(3);
+				String rsDescription = resultSet.getString(4);
+				boolean rsIsRemote = resultSet.getBoolean(5);
+				float rsPrice = resultSet.getFloat(6);
+				int rsCategory = resultSet.getInt(7);
+				formations.add((new Formation(rsId, rsName, rsDuration, rsDescription,  rsIsRemote, rsPrice, rsCategory)));				
+			}	
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return formations;
+	}
+	
+	public ArrayList<Formation> readIsRemote(int id) {
+		ArrayList<Formation> formations = new ArrayList<Formation>();
+		String str = "SELECT * FROM T_Formations WHERE IsRemote="+id;
+		try (PreparedStatement ps = connection.prepareStatement(str)) {
+			ResultSet resultSet = ps.executeQuery();
+			while(resultSet.next()) {
+				int rsId = resultSet.getInt(1);	
+				String rsName = resultSet.getString(2);
+				int rsDuration = resultSet.getInt(3);
+				String rsDescription = resultSet.getString(4);
+				boolean rsIsRemote = resultSet.getBoolean(5);
+				float rsPrice = resultSet.getFloat(6);
+				int rsCategory = resultSet.getInt(7);
+				formations.add((new Formation(rsId, rsName, rsDuration, rsDescription,  rsIsRemote, rsPrice, rsCategory)));				
+			}	
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		return formations;
+	}
 }
