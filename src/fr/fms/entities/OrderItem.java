@@ -4,15 +4,12 @@ public class OrderItem {
 	private int idOrderItem;
 
 	private int idFormation;
-	private int quantity;
 	private double unitaryPrice;
-	
 	private int idOrder;
 
-	public OrderItem(int idOrderItem, int idFormation, int quantity, double unitaryPrice, int idOrder) {
+	public OrderItem(int idOrderItem, int idFormation, double unitaryPrice, int idOrder) {
 		this.idOrderItem = idOrderItem;
 		this.idFormation = idFormation;
-		this.quantity = quantity;
 		this.unitaryPrice = unitaryPrice;
 		this.idOrder = idOrder;
 	}
@@ -31,14 +28,6 @@ public class OrderItem {
 
 	public void setIdArticle(int idFormation) {
 		this.idFormation = idFormation;
-	}
-
-	public int getQuantity() {
-		return quantity;
-	}
-
-	public void setQuantity(int quantity) {
-		this.quantity = quantity;
 	}
 
 	public double getUnitaryPrice() {

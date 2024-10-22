@@ -61,7 +61,7 @@ CREATE TABLE T_Formations (
 	IdFormation				int(4)		PRIMARY KEY AUTO_INCREMENT,
 	Name					varchar(30)	NOT NULL,
 	Duration				int(4),
-	Description				varchar(30)	NOT NULL,
+	Description				varchar(100)	NOT NULL,
 	IsRemote				boolean,
 	UnitaryPrice			float(8, 2)	NOT NULL DEFAULT 0,
 	IdCategory				int(4),
@@ -71,8 +71,8 @@ CREATE TABLE T_Formations (
 INSERT INTO T_Formations ( Name, Duration, Description, IsRemote, UnitaryPrice , IdCategory ) VALUES ( 'Java', 20, 'Java SE 8 : Syntax & Poo', false, 185.99, 1);
 INSERT INTO T_Formations ( Name, Duration, Description, IsRemote, UnitaryPrice , IdCategory ) VALUES ( 'Java avancée', 35, 'Execeptions fichiers JDBC thread...', true, 899.99, 2);
 INSERT INTO T_Formations ( Name, Duration, Description, IsRemote, UnitaryPrice , IdCategory ) VALUES ('Spring',15, 'Spring Core/Mvc/Security', true, 79.99, 3);
-INSERT INTO T_Formations ( Name, Description, Duration, IsRemote, UnitaryPrice , IdCategory  ) VALUES ( 'PHP frameworks', 2, 'Symphony', false, 75.89, 4);
-INSERT INTO T_Formations ( Name, Duration, Description, IsRemote, UnitaryPrice , IdCategory  ) VALUES ( 'C#', 12, 'DotNet core', true, 88.0, 3);
+INSERT INTO T_Formations ( Name, Duration, Description, IsRemote, UnitaryPrice , IdCategory) VALUES ( 'PHP frameworks', 2, 'Symphony', false, 75.89, 4);
+INSERT INTO T_Formations ( Name, Duration, Description, IsRemote, UnitaryPrice , IdCategory) VALUES ( 'C#', 12, 'DotNet core', true, 88.0, 3);
 
 SELECT * FROM T_Formations;
 
@@ -98,7 +98,6 @@ CREATE TABLE T_Order_Items (
 	IdFormation           INT(4)   NOT NULL,
 	FOREIGN KEY(IdFormation) REFERENCES T_Formations(IdFormation),
 	
-	Quantity			FLOAT(4) NOT NULL DEFAULT 1,
 	UnitaryPrice		FLOAT(4)	NOT NULL DEFAULT 0,
 	
 	IdOrder             INT(4)   NOT NULL,

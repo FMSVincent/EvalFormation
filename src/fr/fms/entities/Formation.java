@@ -2,26 +2,38 @@ package fr.fms.entities;
 
 public class Formation {
 	
+	private int idFormation;
 	private String name;
-	private String description;
 	private int duration;
+	private String description;
 	private boolean isRemote;
-	private double price;
+	private float unitaryPrice;
 	private int idCategory;
 	
-	public Formation(String name, String description, int duration, boolean isRemote, double price, int idCategory) {
+	public Formation(int idFormation, String name, int duration, String description, boolean isRemote,
+			float unitaryPrice, int idCategory) {
+		this.idFormation = idFormation;
 		this.name = name;
-		this.description = description;
 		this.duration = duration;
+		this.description = description;
 		this.isRemote = isRemote;
-		this.price = price;
+		this.unitaryPrice = unitaryPrice;
 		this.idCategory = idCategory;
 	}
 
 	@Override
 	public String toString() {
-		return "Formation [name=" + name + ", description=" + description + ", duration=" + duration + ", isRemote="
-				+ isRemote + ", price=" + price + ", idCategory=" + idCategory + "]";
+		return "Formation [idFormation=" + idFormation + ", name=" + name + ", duration=" + duration + ", description="
+				+ description + ", isRemote=" + isRemote + ", unitaryPrice=" + unitaryPrice + ", idCategory="
+				+ idCategory + "]";
+	}
+
+	public int getIdFormation() {
+		return idFormation;
+	}
+
+	public void setIdFormation(int idFormation) {
+		this.idFormation = idFormation;
 	}
 
 	public String getName() {
@@ -32,14 +44,6 @@ public class Formation {
 		this.name = name;
 	}
 
-	public String getDescription() {
-		return description;
-	}
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-
 	public int getDuration() {
 		return duration;
 	}
@@ -48,7 +52,15 @@ public class Formation {
 		this.duration = duration;
 	}
 
-	public boolean isRemote() {
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public boolean getIsRemote() {
 		return isRemote;
 	}
 
@@ -56,12 +68,12 @@ public class Formation {
 		this.isRemote = isRemote;
 	}
 
-	public double getPrice() {
-		return price;
+	public float getUnitaryPrice() {
+		return unitaryPrice;
 	}
 
-	public void setPrice(double price) {
-		this.price = price;
+	public void setUnitaryPrice(float unitaryPrice) {
+		this.unitaryPrice = unitaryPrice;
 	}
 
 	public int getIdCategory() {
@@ -73,5 +85,5 @@ public class Formation {
 	}
 	
 	
-
+	
 }
