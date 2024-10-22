@@ -1,4 +1,5 @@
 package fr.fms.dao;
+import fr.fms.entities.Category;
 import fr.fms.entities.Customer;
 import fr.fms.entities.Formation;
 import fr.fms.entities.Order;
@@ -15,9 +16,9 @@ public class DaoFactory {
 		return new UserDao();
 	}
 	
-// 	public static Dao<Category> getCategoryDao() {
-// 		return new CategoryDao();
-// 	}
+ 	public static Dao<Category> getCategoryDao() {
+ 		return new CategoryDao();
+ 	}
  	
  	public static Dao<Order> getOrderDao() {
  		return new OrderDao();

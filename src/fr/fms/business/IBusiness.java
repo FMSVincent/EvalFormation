@@ -1,5 +1,7 @@
 package fr.fms.business;
 import java.util.ArrayList;
+
+import fr.fms.entities.Category;
 import fr.fms.entities.Formation;
 
 
@@ -56,6 +58,8 @@ public interface IBusiness {
 	 * @return Liste d'articles
 	 */
 	public ArrayList<Formation> readFormationByCatId(int idCat);
+
+	public ArrayList<Category> readCategories();
 
 
 }

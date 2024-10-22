@@ -10,6 +10,7 @@ import java.util.HashMap;
 import fr.fms.dao.Dao;
 import fr.fms.dao.DaoFactory;
 import fr.fms.dao.FormationDao;
+import fr.fms.entities.Category;
 import fr.fms.entities.Customer;
 import fr.fms.entities.Formation;
 import fr.fms.entities.Order;
@@ -21,6 +22,7 @@ public class IBuisinessImpl implements IBusiness {
 	private Dao<Order> orderDao = DaoFactory.getOrderDao();
 	private Dao<OrderItem> orderItemDao = DaoFactory.getOrderItemDao();
 	private Dao<Customer> customerDao = DaoFactory.getCustomerDao();
+	private Dao<Category> categoryDao = DaoFactory.getCategoryDao();
 	
 	public IBuisinessImpl() {
 		this.cart = new HashMap<Integer,Formation>();
@@ -70,6 +72,11 @@ public class IBuisinessImpl implements IBusiness {
 	public ArrayList<Formation> readFormationByCatId(int id) {
 		return ((FormationDao) formationDao).readAllByCat(id);
 	}
+	
+	@Override
+	public ArrayList<Category> readCategories() {
+		return categoryDao.readAll();
+	}
 
 	/**
 	 * renvoi le total de la commande en cours
@@ -87,6 +94,10 @@ public class IBuisinessImpl implements IBusiness {
 	
 	public void clearCart() {
 		cart.clear();		
+	}
+	
+	public Category readOneCategory(int id) {
+		return categoryDao.read(id);
 	}
 
 }
